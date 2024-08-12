@@ -18,3 +18,6 @@ df = pd.concat([real_df, fake_df], axis=0).sample(frac=1).reset_index(drop=True)
 
 # Feature Selection
 df = df[['text', 'label']]
+
+# Split data into training and testing datasets
+X, y = train_test_split(df, test_size=0.2, random_state=12)
