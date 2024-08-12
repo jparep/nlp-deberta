@@ -38,3 +38,11 @@ def tokenize_data(df, tokenizer, max_length=512):
 X_encodings = tokenize_data(df, tokenizer)
 y_encodings = tokenize_data(df, tokenizer)
 
+# Create a Data Class
+class FakeNewsData(torch.utils.data.Datset):
+    def __init__(self, encodings, labels):
+        self.encodings = encodings
+        self.labels = labels
+        
+    def __getitem__(self, idx):
+        
