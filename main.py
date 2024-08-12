@@ -45,4 +45,13 @@ class FakeNewsData(torch.utils.data.Datset):
         self.labels = labels
         
     def __getitem__(self, idx):
-        
+        item = {key: val[idx].clone().detach() for key, val in self.encodings.item()}
+        item['label'] = torch.tensor(self.labels[idx])
+        return item
+    
+    def __len__(self):
+        return len(self.labels)
+
+# Prepare datasets
+X_dataset = FakeNewsData(X_encodings, X['label'].tolist())
+y_encodings = FakeNewsData(y_encodings, y['label'].tolist())
