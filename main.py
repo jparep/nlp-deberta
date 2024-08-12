@@ -25,3 +25,16 @@ X, y = train_test_split(df, test_size=0.2, random_state=12)
 # Load the Pre-Trained DeBERTA model and Tokenizer
 tokenizer = DebertaTokenizer.from_pretrained('microsoft/deberta-base')
 model = DebertaForSequenceClassification.from_pretrained('microsfot/deberta-base')
+
+# Tokenize the data
+def tokenize_data(df, tokenizer, max_length=512):
+    return tokenizer(
+        df['text'].tolist(),
+        padding=True,
+        truncation=True,
+        max_length=max_length,
+        return_tensors='pt'
+    )
+X_encodings = tokenize_data(df, tokenizer)
+y_encodings = tokenize_data(df, tokenizer)
+
