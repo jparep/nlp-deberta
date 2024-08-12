@@ -55,3 +55,20 @@ class FakeNewsData(torch.utils.data.Datset):
 # Prepare datasets
 X_dataset = FakeNewsData(X_encodings, X['label'].tolist())
 y_encodings = FakeNewsData(y_encodings, y['label'].tolist())
+
+
+# Set up the Training Arguments
+training_args = TrainingArguments(
+    output_dir='./results',
+    num_train_epochs=2, # Use fewer epochs as the mdoel is already pre-trained
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
+    warmup_steps=500,
+    weight_decay=0.01,
+    logging_dir='./logs',
+    logging_steps=10,
+    evaluation_strategy='epoch',    # Evaluate during training at the end of each epoch
+    save_strategy='epoch',          # Save the mdoel at the end of each epoch
+    load_best_model_at_end=True,    # Load the best model after training
+    metric_for_best_model='accuracy'
+)
