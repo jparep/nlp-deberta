@@ -89,3 +89,8 @@ trainer = Trainer(
 
 # Fine Tune Model
 trainer.train()
+
+# Evaluate the model
+result = trainer.evaluate()
+print(f'Evaluation Results: {result}')
+
