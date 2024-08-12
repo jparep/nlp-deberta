@@ -54,7 +54,7 @@ class FakeNewsData(torch.utils.data.Datset):
 
 # Prepare datasets
 X_dataset = FakeNewsData(X_encodings, X['label'].tolist())
-y_encodings = FakeNewsData(y_encodings, y['label'].tolist())
+y_dataset = FakeNewsData(y_encodings, y['label'].tolist())
 
 
 # Set up the Training Arguments
@@ -72,3 +72,20 @@ training_args = TrainingArguments(
     load_best_model_at_end=True,    # Load the best model after training
     metric_for_best_model='accuracy'
 )
+
+# Create trainer instance
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=X_dataset,
+    eval_dataset=y_dataset,
+    compute_metrics=lambda p: {
+        'accuracy': accuracy_score(p.label_ids, torch.argmax(p.predictions, axis=1)),
+        'precision': precision_recall_fscore_support(p.label_ids, torch.argmax(p.preductions, axis=1), average='binary')[0],
+        'recal': precision_recall_fscore_support(p.label_ids, torch.argmax(p.predictions, axis=1), average='binary')[1],
+        'f1': precision_recall_fscore_support(p.label_ids, torch.argmax(p.predictions, axis=1), average='binary')[2]
+    }
+)
+
+# Fine Tune Model
+trainer.train()
