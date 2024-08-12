@@ -1,0 +1,94 @@
+# Python specific #
+###################
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook Checkpoints #
+.ipynb_checkpoints
+
+# Data Files #
+##############
+real.csv
+fake.csv
+
+# Model Output #
+###############
+/results/
+/fake_news_deberta_model/
+/logs/
+
+# Environment Files #
+#####################
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Packages #
+############
+*.egg
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller #
+###############
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs #
+##################
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports #
+################################
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# MyPy #
+########
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Cache #
+#########
+*.cache
+*.log
+*.tmp
+*.bak
+
+# IDE Specific #
+################
+.vscode/
+.idea/
+
+# Operating System files #
+##########################
+.DS_Store
+Thumbs.db
+desktop.ini
