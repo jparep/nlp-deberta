@@ -21,3 +21,7 @@ df = df[['text', 'label']]
 
 # Split data into training and testing datasets
 X, y = train_test_split(df, test_size=0.2, random_state=12)
+
+# Load the Pre-Trained DeBERTA model and Tokenizer
+tokenizer = DebertaTokenizer.from_pretrained('microsoft/deberta-base')
+model = DebertaForSequenceClassification.from_pretrained('microsfot/deberta-base')
