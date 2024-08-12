@@ -16,3 +16,5 @@ fake_df['label'] = 0
 # Concatinate data
 df = pd.concat([real_df, fake_df], axis=0).sample(frac=1).reset_index(drop=True)
 
+# Feature Selection
+df = df[['text', 'label']]
