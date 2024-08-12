@@ -94,3 +94,7 @@ trainer.train()
 result = trainer.evaluate()
 print(f'Evaluation Results: {result}')
 
+
+# Save the model
+model.save_pretrained('./fake_news_deberta_mdoel')
+tokenizer.save_pretrained('./fake_news_deberta_model')
