@@ -13,3 +13,6 @@ fake_df = pd.read_csv('/home/jparep/proj/npl-deberta/data/fake.cvs')
 real_df['label'] = 1
 fake_df['label'] = 0
 
+# Concatinate data
+df = pd.concat([real_df, fake_df], axis=0).sample(frac=1).reset_index(drop=True)
+
